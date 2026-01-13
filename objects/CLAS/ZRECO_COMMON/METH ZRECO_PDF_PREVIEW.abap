@@ -1058,10 +1058,10 @@
         <fs_table1>-cevap_doviz_bakiye = ls_form-wrbtr_c.
         <fs_table1>-pb2          = ls_form-waers_c.
 
-        IF ls_form-dmbtr < 0 .
+        IF ls_form-dmbtr_c < 0 .
           <fs_table1>-cevap_try_bakiye = ( -1 ) * ls_form-dmbtr_c.
           <fs_table1>-borc_alacak2 = 'Alacak'.
-        ELSEIF  ls_form-dmbtr = 0 .
+        ELSEIF  ls_form-dmbtr_c = 0 .
           <fs_table1>-borc_alacak2 = ''.
         ELSE.
           <fs_table1>-cevap_try_bakiye = ls_form-dmbtr_c.
