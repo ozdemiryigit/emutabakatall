@@ -1018,7 +1018,12 @@
       ls_data-takip            = ls_h001-mnumber.
       ls_data-mutabakat_tarihi = |{ gv_last_date+6(2) }.{ gv_last_date+4(2) }.{ gv_last_date+0(4) }|.
       ls_data-cari_no          = gs_account-hesap_no.
-      ls_data-iletisim         = gs_r000-ernam.
+
+      SELECT SINGLE PersonFullName
+      FROM I_BusinessUserBasic
+      WHERE UserID = @gs_r000-ernam
+      INTO @DATA(lv_cevaplayan).
+      ls_data-iletisim         = lv_cevaplayan.
 
       ls_data-cari_unvan = gs_adrc-OrganizationName1.
       ls_data-sirket_unvan =  lv_unvan.
@@ -1056,6 +1061,8 @@
         IF ls_form-dmbtr < 0 .
           <fs_table1>-cevap_try_bakiye = ( -1 ) * ls_form-dmbtr_c.
           <fs_table1>-borc_alacak2 = 'Alacak'.
+        ELSEIF  ls_form-dmbtr = 0 .
+          <fs_table1>-borc_alacak2 = ''.
         ELSE.
           <fs_table1>-cevap_try_bakiye = ls_form-dmbtr_c.
           <fs_table1>-borc_alacak2 = 'Borç'.
