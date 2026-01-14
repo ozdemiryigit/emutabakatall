@@ -173,8 +173,24 @@
     AND daily IN @r_daily
     AND salma IN @it_salma
     AND smkod IN @it_smkod
-    AND ek    EQ @iv_ek
+*    AND ek    EQ @iv_ek
     INTO CORRESPONDING FIELDS OF TABLE @gt_h001.
+
+    SELECT
+    out~*
+    , sup~Supplier AS supplier
+  FROM @gt_h001 AS out
+  INNER JOIN I_SupplierCompany AS sup
+    ON sup~CompanyCode = out~bukrs
+   AND sup~Supplier    = out~hesap_no
+   AND sup~accountingclerk = '01'
+  INTO TABLE @DATA(lt_joined).
+
+    LOOP AT lt_joined ASSIGNING FIELD-SYMBOL(<ls_del>).
+
+      DELETE gt_h001 WHERE hesap_no = <ls_del>-supplier.
+
+    ENDLOOP.
 
 *    CHECK sy-subrc EQ 0.
 

@@ -76,14 +76,15 @@ CLASS zcl_reco_follow_report DEFINITION
 
 
 *     Mutabakat gönderim başlık bilgileri
-    DATA: gt_h001 TYPE SORTED TABLE OF zreco_hdr
-                  WITH UNIQUE KEY bukrs
-                                  gsber
-                                  mnumber
-                                  monat
-                                  gjahr
-                                  hesap_tur
-                                  hesap_no ,
+*    DATA: gt_h001 TYPE SORTED TABLE OF zreco_hdr
+    DATA: gt_h001 TYPE  TABLE OF zreco_hdr,
+*                  WITH UNIQUE KEY bukrs
+*                                  gsber
+*                                  mnumber
+*                                  monat
+*                                  gjahr
+*                                  hesap_tur
+*                                  hesap_no ,
           gs_h001 TYPE zreco_hdr,
           "Mutabakat cevap başlık bilgileri
           gt_h002 TYPE SORTED TABLE OF zreco_hia

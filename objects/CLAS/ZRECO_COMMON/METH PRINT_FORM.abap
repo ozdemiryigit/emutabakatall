@@ -702,14 +702,14 @@
         ls_head-salma = ls_businesspartner-BusinessPartnerGrouping.
       ENDIF.
 
-      SELECT SINGLE *
-FROM I_suppliercompanY
-WHERE supplier =   @ls_out-hesap_no
-AND accountingclerk = '01'
-INTO @DATA(ls_scompany).
-      IF ls_businesspartner IS NOT INITIAL.
-        ls_head-ek = 'X'.
-      ENDIF.
+*      SELECT SINGLE *
+*FROM I_suppliercompanY
+*WHERE supplier =   @ls_out-hesap_no
+*AND accountingclerk = '01'
+*INTO @DATA(ls_scompany).
+*      IF ls_businesspartner IS NOT INITIAL.
+*        ls_head-ek = 'X'.
+*      ENDIF.
 
       INSERT zreco_hdr FROM @ls_head.
 
