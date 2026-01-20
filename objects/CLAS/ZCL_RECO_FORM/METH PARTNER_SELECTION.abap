@@ -66,7 +66,7 @@
         WHEN zreco_if_common_types=>mc_nrart_pe.
           SELECT customer AS kunnr
             FROM i_custsalespartnerfunc
-             ınner join @lt_dpar as lt_dpar
+             ınner JOIN @lt_dpar AS lt_dpar
              ON SalesOrganization EQ lt_dpar~vkorg
              AND DistributionChannel EQ lt_dpar~vtweg
              AND Division EQ lt_dpar~spart

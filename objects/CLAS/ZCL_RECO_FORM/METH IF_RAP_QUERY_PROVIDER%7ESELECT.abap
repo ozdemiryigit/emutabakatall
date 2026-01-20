@@ -249,6 +249,22 @@
           MODIFY zreco_gtout FROM TABLE @lt_temp.
         ENDIF.
 
+        SELECT
+            out~*
+            , sup~Supplier AS supplier
+          FROM @lt_output AS out
+          INNER JOIN I_SupplierCompany AS sup
+            ON sup~CompanyCode = out~bukrs
+           AND sup~Supplier    = out~akont
+           AND sup~accountingclerk = '01'
+          INTO TABLE @DATA(lt_joined).
+
+        LOOP AT lt_joined ASSIGNING FIELD-SYMBOL(<ls_del>).
+
+          DELETE lt_output WHERE akont = <ls_del>-supplier.
+
+        ENDLOOP.
+
         SELECT *
               FROM @lt_output AS output
               ORDER BY output~akont
