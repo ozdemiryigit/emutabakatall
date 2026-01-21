@@ -1014,7 +1014,7 @@
 *          day_in_no_date    = 1
       ).
 
-      ls_data-duzenleme_tarihi = cl_abap_context_info=>get_system_date( ).
+      ls_data-duzenleme_tarihi = ls_h001-budat1.
       ls_data-takip            = ls_h001-mnumber.
       ls_data-mutabakat_tarihi = |{ gv_last_date+6(2) }.{ gv_last_date+4(2) }.{ gv_last_date+0(4) }|.
       ls_data-cari_no          = gs_account-hesap_no.

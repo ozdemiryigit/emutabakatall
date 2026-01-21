@@ -202,7 +202,7 @@
     ls_head-ftype = '01'.
 
     ls_head-land1 = 'TR'. "gs_account_info-land1. "hkizilkaya
-
+    ls_head-budat1 = cl_abap_context_info=>get_system_date( ).
 
 
 
